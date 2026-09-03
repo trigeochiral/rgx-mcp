@@ -1,7 +1,11 @@
 # RGX — MCP server
 
+<!-- mcp-name: io.github.trigeochiral/rgx -->
+
 MCP client for **RGX**: two primitives for AI trading agents, pay-per-call in USDC
 on Base (x402), free tier, no signup.
+
+Hosted API: `https://rgx.tail817c3b.ts.net` — set it as `RGX_API`.
 
 | Tool | What |
 |---|---|
@@ -28,10 +32,14 @@ Chains: `base`, `ethereum`, `arbitrum`.
 ## Install
 
 ```bash
-pip install httpx
-claude mcp add rgx \
-  --env RGX_API=https://<the-hosted-api-url> \
-  -- python3 /path/to/rgx_mcp.py
+pip install rgx-mcp
+claude mcp add rgx --env RGX_API=https://rgx.tail817c3b.ts.net -- rgx-mcp
+```
+
+or with `uvx` (no install):
+
+```bash
+claude mcp add rgx --env RGX_API=https://rgx.tail817c3b.ts.net -- uvx rgx-mcp
 ```
 
 Optional: `RGX_XPAYMENT` = a base64 x402 `X-PAYMENT` payload, to make paid calls
@@ -41,15 +49,15 @@ past the free tier. Without it you get 25 free calls/day per IP.
 
 ```bash
 # Snap Router
-curl -sX POST https://<api>/v1/snap -H 'content-type: application/json' \
+curl -sX POST https://rgx.tail817c3b.ts.net/v1/snap -H 'content-type: application/json' \
   -d '{"task":"check a base token for honeypot before trading","k":4}'
 
 # Pre-trade report
-curl -s https://<api>/v1/base/token/0x532f27101965dd16442E59d40670FaF5eBB142E4/report
+curl -s https://rgx.tail817c3b.ts.net/v1/base/token/0x532f27101965dd16442E59d40670FaF5eBB142E4/report
 ```
 
-Discovery: `…/.well-known/agent-card.json` (A2A), `…/.well-known/x402`,
-`…/.well-known/mcp.json`, `…/llms.txt`, `…/openapi.json`.
+Discovery: `/.well-known/agent-card.json` (A2A), `/.well-known/x402`,
+`/.well-known/mcp.json`, `/llms.txt`, `/openapi.json`.
 
 ## License
 
