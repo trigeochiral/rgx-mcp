@@ -10,7 +10,7 @@ Hosted API: `https://rgx.tail817c3b.ts.net` — set it as `RGX_API`.
 | Tool | What |
 |---|---|
 | `snap_router` | **Snap Router** — your task → the ranked x402 / MCP tools that serve it, over the merged x402 Bazaar + MCP Registry catalog (16k+). One pass, ~200ms, no LLM call. $0.003 |
-| `vet_bounty` | **is this bounty a trap?** — screens a GitHub issue URL or raw title+body for prompt-injection / system-prompt exfiltration payloads, throwaway farm repos, no payment rail, points/token "pay", mass-recruitment dilution. Call before an agent acts on any bounty it found itself. $0.005 |
+| `vet_bounty` | **is this bounty a trap?** — screens a GitHub issue URL or raw title+body for prompt-injection / system-prompt exfiltration payloads, throwaway farm repos, no payment rail, points/token "pay", mass-recruitment dilution. Call before an agent acts on any bounty it found itself. $0.03 |
 | `token_report` | pre-trade: real tradeable depth vs headline TVL + multi-pool price corroboration + honeypot test, one call. $0.04 |
 | `token_depth` | largest trade that fills within 1 / 2 / 5% price impact, vs the headline TVL. $0.01 |
 | `price_corroboration` | consensus USD price only when ≥2 deep pools agree; flags single-source / manipulated prices. $0.01 |
