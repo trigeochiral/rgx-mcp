@@ -1,0 +1,26 @@
+# Smithery deployment manifest — https://smithery.ai/docs
+# Local stdio server, distributed on PyPI as `rgx-mcp` (pip install rgx-mcp).
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    properties:
+      rgxApi:
+        type: string
+        title: RGX API base URL
+        description: Base URL of the hosted RGX API
+        default: "https://rgx.tail817c3b.ts.net"
+      rgxXpayment:
+        type: string
+        title: x402 X-PAYMENT payload (optional)
+        description: Base64 x402 payload for paid calls past the free tier
+  exampleConfig:
+    rgxApi: "https://rgx.tail817c3b.ts.net"
+  commandFunction: |
+    (config) => ({
+      command: "rgx-mcp",
+      env: {
+        RGX_API: config.rgxApi || "https://rgx.tail817c3b.ts.net",
+        ...(config.rgxXpayment ? { RGX_XPAYMENT: config.rgxXpayment } : {})
+      }
+    })
