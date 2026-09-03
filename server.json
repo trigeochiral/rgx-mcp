@@ -2,7 +2,7 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.trigeochiral/rgx",
   "title": "RGX — Snap Router + RyRank + Pricing-Truth",
-  "description": "Snap Router (x402/MCP tool selection, no LLM) + RyRank (Cohere-compatible reranker) + on-chain liquidity & price integrity for agents",
+  "description": "Tool selection, Cohere-compatible reranking, and on-chain pricing-truth for agents",
   "version": "1.0.4",
   "websiteUrl": "https://rgx.tail817c3b.ts.net",
   "repository": {
