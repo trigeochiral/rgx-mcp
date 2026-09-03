@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rgx-mcp"
+version = "1.0.0"
+description = "MCP server for RGX — Snap Router + Pricing-Truth for AI trading agents"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+dependencies = ["httpx>=0.27"]
+
+[project.scripts]
+rgx-mcp = "rgx_mcp:main"
+
+[tool.setuptools]
+py-modules = ["rgx_mcp"]
