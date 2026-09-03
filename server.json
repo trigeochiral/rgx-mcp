@@ -1,9 +1,9 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.trigeochiral/rgx",
-  "title": "RGX — Snap Router + Pricing-Truth",
-  "description": "Snap Router (x402/MCP tool selection, no LLM) + on-chain liquidity & price integrity for agents",
-  "version": "1.0.3",
+  "title": "RGX — Snap Router + RyRank + Pricing-Truth",
+  "description": "Snap Router (x402/MCP tool selection, no LLM) + RyRank (Cohere-compatible reranker) + on-chain liquidity & price integrity for agents",
+  "version": "1.0.4",
   "websiteUrl": "https://rgx.tail817c3b.ts.net",
   "repository": {
     "url": "https://github.com/trigeochiral/rgx-mcp",
@@ -13,7 +13,7 @@
     {
       "registryType": "pypi",
       "identifier": "rgx-mcp",
-      "version": "1.0.3",
+      "version": "1.0.4",
       "transport": {
         "type": "stdio"
       },

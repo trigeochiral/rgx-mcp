@@ -7,6 +7,7 @@
 """
 Tools:
   snap_router          task -> ranked x402 / MCP tools that serve it (Snap Router)
+  rerank               rerank documents by relevance to a query (RyRank, Cohere-compatible)
   vet_bounty           is this bounty / open-work listing a trap? (prompt-injection,
                        farm repos, no payment rail, ...)
   token_report         pre-trade: real depth vs TVL + price corroboration + honeypot
@@ -37,7 +38,7 @@ import httpx
 API = os.environ.get("RGX_API", os.environ.get("RGX_TRUTH_API", "https://rgx.example")).rstrip("/")
 XPAYMENT = os.environ.get("RGX_XPAYMENT", os.environ.get("RGX_TRUTH_XPAYMENT"))
 PROTOCOL = "2025-06-18"
-VERSION = "1.0.3"
+VERSION = "1.0.4"
 
 _ADDR = {"type": "string", "pattern": "^0x[a-fA-F0-9]{40}$",
          "description": "0x-prefixed 20-byte token contract address"}
@@ -99,6 +100,35 @@ TOOLS = [
             "works_well_with": {"type": "array", "items": {"type": "string"}}},
             "required": ["task", "picks"]},
         "annotations": {"title": "Snap Router", **_READ},
+    },
+    {
+        "name": "rerank",
+        "title": "RyRank — rerank documents by a query",
+        "description": (
+            "Rerank a list of documents/passages by relevance to a query. Cohere-compatible "
+            "response (`results: [{index, relevance_score}]`), so it drops into an existing "
+            "rerank call. One pass, no GPU, no model download, NO ACCOUNT - $0.001 USDC per "
+            "call over x402 (about half of Cohere Rerank) or a free tier. Documents are "
+            "supplied per call and discarded - this is NOT a persistent index (for a standing "
+            "tool/service catalog use snap_router). Best when the candidates already share "
+            "vocabulary with the query (typical RAG retrieval output); it is a lexical-semantic "
+            "method, not a cross-encoder. Up to 1000 docs per call."),
+        "inputSchema": {"type": "object", "properties": {
+            "query": {"type": "string", "description": "the query to rank against"},
+            "documents": {"type": "array", "items": {"type": "string"},
+                          "description": "2-1000 documents (strings)"},
+            "top_n": {"type": "integer", "description": "return only the top N (default: all)"},
+            "return_documents": {"type": "boolean", "default": False,
+                                 "description": "include the document text in each result"}},
+            "required": ["query", "documents"]},
+        "outputSchema": {"type": "object", "properties": {
+            "results": {"type": "array", "items": {"type": "object", "properties": {
+                "index": {"type": "integer"}, "relevance_score": {"type": "number"},
+                "document": {"type": "object"}}}},
+            "meta": {"type": "object"}},
+            "required": ["results"]},
+        "annotations": {"title": "RyRank", "readOnlyHint": True, "destructiveHint": False,
+                        "idempotentHint": True, "openWorldHint": False},
     },
     {
         "name": "token_report",
@@ -262,6 +292,12 @@ def call_tool(name: str, args: dict) -> str:
                 "labels": args.get("labels"), "reward_text": args.get("reward_text"),
                 "deadline_hours": args.get("deadline_hours")}.items() if v is not None}
             r = c.post(f"{API}/v1/vet", json=body, headers=_headers())
+        elif name == "rerank":
+            body = {k: v for k, v in {
+                "query": args.get("query", ""), "documents": args.get("documents", []),
+                "top_n": args.get("top_n"),
+                "return_documents": args.get("return_documents")}.items() if v is not None}
+            r = c.post(f"{API}/v1/rerank", json=body, headers=_headers())
         elif name == "anomaly_screener":
             q = {k: v for k, v in {"signal": args.get("signal"),
                                    "since_s": args.get("since_s"),

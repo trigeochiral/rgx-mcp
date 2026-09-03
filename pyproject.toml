@@ -4,13 +4,14 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "rgx-mcp"
-version = "1.0.3"
-description = "MCP server for RGX — Snap Router + Pricing-Truth for AI trading agents"
+version = "1.0.4"
+description = "MCP server for RGX — Snap Router + RyRank + Pricing-Truth for AI agents"
 readme = "README.md"
 license = {text = "MIT"}
 requires-python = ">=3.9"
 dependencies = ["httpx>=0.27"]
-keywords = ["mcp", "x402", "agent", "defi", "base", "honeypot", "liquidity", "tool-selection"]
+keywords = ["mcp", "x402", "agent", "defi", "base", "honeypot", "liquidity", "tool-selection",
+            "rerank", "reranker", "retrieval", "rag", "cohere-alternative"]
 
 [project.urls]
 Homepage = "https://rgx.tail817c3b.ts.net"
