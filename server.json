@@ -1,0 +1,22 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
+  "name": "io.github.trigeochiral/rgx",
+  "description": "AI trading-agent primitives: Snap Router (instant x402/MCP tool selection over the merged Bazaar + MCP Registry, one pass, no LLM call) and Pricing-Truth (real tradeable depth vs headline TVL, multi-pool price corroboration, real buy+sell honeypot test, anomaly screener). Pay-per-call USDC on Base via x402, free tier.",
+  "version": "1.0.0",
+  "repository": {
+    "url": "https://github.com/trigeochiral/rgx-mcp",
+    "source": "github"
+  },
+  "packages": [
+    {
+      "registryType": "pypi",
+      "identifier": "rgx-mcp",
+      "version": "1.0.0",
+      "transport": { "type": "stdio" },
+      "environmentVariables": [
+        { "name": "RGX_API", "description": "Base URL of the hosted RGX API", "isRequired": true },
+        { "name": "RGX_XPAYMENT", "description": "Optional base64 x402 X-PAYMENT payload for paid calls past the free tier", "isRequired": false, "isSecret": true }
+      ]
+    }
+  ]
+}
