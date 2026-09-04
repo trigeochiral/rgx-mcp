@@ -3,8 +3,8 @@
   "name": "io.github.trigeochiral/rgx",
   "title": "RGX — Snap Router + RyRank + Pricing-Truth",
   "description": "Tool selection, Cohere-compatible reranking, and on-chain pricing-truth for agents",
-  "version": "1.0.4",
-  "websiteUrl": "https://rgx.tail817c3b.ts.net",
+  "version": "1.0.5",
+  "websiteUrl": "https://trigeochiral.com",
   "repository": {
     "url": "https://github.com/trigeochiral/rgx-mcp",
     "source": "github"
@@ -13,16 +13,16 @@
     {
       "registryType": "pypi",
       "identifier": "rgx-mcp",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "transport": {
         "type": "stdio"
       },
       "environmentVariables": [
         {
           "name": "RGX_API",
-          "description": "Base URL of the hosted RGX API (default https://rgx.tail817c3b.ts.net)",
+          "description": "Base URL of the hosted RGX API (default https://trigeochiral.com)",
           "isRequired": true,
-          "default": "https://rgx.tail817c3b.ts.net"
+          "default": "https://trigeochiral.com"
         },
         {
           "name": "RGX_XPAYMENT",

@@ -18,7 +18,7 @@ Tools:
   anomaly_screener     tokens on a chain that just broke (depth collapse / price break)
 
 Config (env):
-  RGX_API         base URL of the hosted API   (default https://rgx.example — set this)
+  RGX_API         base URL of the hosted API   (default https://trigeochiral.com)
   RGX_XPAYMENT    optional base64 x402 X-PAYMENT payload for paid calls; without it
                   the free tier applies (25 calls/day/IP)
 
@@ -35,10 +35,10 @@ import traceback
 
 import httpx
 
-API = os.environ.get("RGX_API", os.environ.get("RGX_TRUTH_API", "https://rgx.example")).rstrip("/")
+API = os.environ.get("RGX_API", os.environ.get("RGX_TRUTH_API", "https://trigeochiral.com")).rstrip("/")
 XPAYMENT = os.environ.get("RGX_XPAYMENT", os.environ.get("RGX_TRUTH_XPAYMENT"))
 PROTOCOL = "2025-06-18"
-VERSION = "1.0.4"
+VERSION = "1.0.5"
 
 _ADDR = {"type": "string", "pattern": "^0x[a-fA-F0-9]{40}$",
          "description": "0x-prefixed 20-byte token contract address"}

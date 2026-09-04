@@ -9,18 +9,18 @@ startCommand:
         type: string
         title: RGX API base URL
         description: Base URL of the hosted RGX API
-        default: "https://rgx.tail817c3b.ts.net"
+        default: "https://trigeochiral.com"
       rgxXpayment:
         type: string
         title: x402 X-PAYMENT payload (optional)
         description: Base64 x402 payload for paid calls past the free tier
   exampleConfig:
-    rgxApi: "https://rgx.tail817c3b.ts.net"
+    rgxApi: "https://trigeochiral.com"
   commandFunction: |
     (config) => ({
       command: "rgx-mcp",
       env: {
-        RGX_API: config.rgxApi || "https://rgx.tail817c3b.ts.net",
+        RGX_API: config.rgxApi || "https://trigeochiral.com",
         ...(config.rgxXpayment ? { RGX_XPAYMENT: config.rgxXpayment } : {})
       }
     })

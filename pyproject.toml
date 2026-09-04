@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "rgx-mcp"
-version = "1.0.4"
+version = "1.0.5"
 description = "MCP server for RGX — Snap Router + RyRank + Pricing-Truth for AI agents"
 readme = "README.md"
 license = {text = "MIT"}
@@ -14,7 +14,7 @@ keywords = ["mcp", "x402", "agent", "defi", "base", "honeypot", "liquidity", "to
             "rerank", "reranker", "retrieval", "rag", "cohere-alternative"]
 
 [project.urls]
-Homepage = "https://rgx.tail817c3b.ts.net"
+Homepage = "https://trigeochiral.com"
 Repository = "https://github.com/trigeochiral/rgx-mcp"
 
 [project.scripts]

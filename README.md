@@ -5,7 +5,7 @@
 MCP client for **RGX**: tool discovery, reranking, and on-chain pricing-truth for
 AI agents — pay-per-call in USDC on Base (x402), free tier, no signup.
 
-Hosted API: `https://rgx.tail817c3b.ts.net` — set it as `RGX_API`.
+Hosted API: `https://trigeochiral.com` — set it as `RGX_API`.
 
 | Tool | What |
 |---|---|
@@ -42,13 +42,13 @@ Chains: `base`, `ethereum`, `arbitrum`.
 
 ```bash
 pip install rgx-mcp
-claude mcp add rgx --env RGX_API=https://rgx.tail817c3b.ts.net -- rgx-mcp
+claude mcp add rgx --env RGX_API=https://trigeochiral.com -- rgx-mcp
 ```
 
 or with `uvx` (no install):
 
 ```bash
-claude mcp add rgx --env RGX_API=https://rgx.tail817c3b.ts.net -- uvx rgx-mcp
+claude mcp add rgx --env RGX_API=https://trigeochiral.com -- uvx rgx-mcp
 ```
 
 Optional: `RGX_XPAYMENT` = a base64 x402 `X-PAYMENT` payload, to make paid calls
@@ -58,15 +58,15 @@ past the free tier. Without it you get 25 free calls/day per IP.
 
 ```bash
 # Snap Router
-curl -sX POST https://rgx.tail817c3b.ts.net/v1/snap -H 'content-type: application/json' \
+curl -sX POST https://trigeochiral.com/v1/snap -H 'content-type: application/json' \
   -d '{"task":"check a base token for honeypot before trading","k":4}'
 
 # RyRank
-curl -sX POST https://rgx.tail817c3b.ts.net/v1/rerank -H 'content-type: application/json' \
+curl -sX POST https://trigeochiral.com/v1/rerank -H 'content-type: application/json' \
   -d '{"query":"how do I reset my password","documents":["Go to Settings > Security and click Reset Password.","Our refund policy allows returns within 30 days."],"top_n":2}'
 
 # Pre-trade report
-curl -s https://rgx.tail817c3b.ts.net/v1/base/token/0x532f27101965dd16442E59d40670FaF5eBB142E4/report
+curl -s https://trigeochiral.com/v1/base/token/0x532f27101965dd16442E59d40670FaF5eBB142E4/report
 ```
 
 Discovery: `/.well-known/agent-card.json` (A2A), `/.well-known/x402`,
