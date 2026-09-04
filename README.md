@@ -27,7 +27,7 @@ Chains: `base`, `ethereum`, `arbitrum`.
   retrieval beats keyword and beats long-context. Coinbase's Bazaar `/ask` is
   LLM-ranked (a model call on every task); 402index falls back to keyword-only
   when its embedding service times out. Snap Router has neither hole.
-- **RyRank** — a lexical+spectral hybrid reranker, not a cross-encoder: strong
+- **RyRank** — a hybrid reranker, not a cross-encoder: strong
   when the candidates already share vocabulary with the query, which is the
   common case for RAG retrieval output and tool/document shortlists. Built for
   high-volume, latency- and cost-sensitive reranking (narrowing a retrieval

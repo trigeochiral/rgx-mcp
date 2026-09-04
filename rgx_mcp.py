@@ -111,8 +111,8 @@ TOOLS = [
             "call over x402 (about half of Cohere Rerank) or a free tier. Documents are "
             "supplied per call and discarded - this is NOT a persistent index (for a standing "
             "tool/service catalog use snap_router). Best when the candidates already share "
-            "vocabulary with the query (typical RAG retrieval output); it is a lexical-semantic "
-            "method, not a cross-encoder. Up to 1000 docs per call."),
+            "vocabulary with the query (typical RAG retrieval output); it favours shared "
+            "wording over deep pairwise scoring. Up to 1000 docs per call."),
         "inputSchema": {"type": "object", "properties": {
             "query": {"type": "string", "description": "the query to rank against"},
             "documents": {"type": "array", "items": {"type": "string"},
